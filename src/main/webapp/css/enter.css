@@ -1,0 +1,20 @@
+.container {
+	text-align: center;
+}
+
+.page-header {
+	padding-top: 30px;
+}
+
+.container h1 {
+    font-size: 22px;
+    color: #FFFFE0;
+ }
+
+ body {
+    background: url(../img/registration.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+ }
