@@ -8,7 +8,7 @@
     <script src="webjars/jquery/2.1.4/jquery.min.js"></script>
     <script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    <link rel='stylesheet' href="/css/navigation.css">
+    <link rel='stylesheet' href="css/navigation.css">
 
 </head>
 <body>
