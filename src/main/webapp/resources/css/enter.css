@@ -11,6 +11,10 @@
     color: #FFFFE0;
  }
 
+ footer {
+     position: absolute;
+ }
+
  body {
     background: url(../img/registration.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;

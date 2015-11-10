@@ -11,6 +11,6 @@ import java.io.IOException;
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-
+        httpServletResponse.sendRedirect("/gallary");
     }
 }

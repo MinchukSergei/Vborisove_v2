@@ -21,7 +21,7 @@
                 password-parameter="password"
                 authentication-success-handler-ref="authenticationSuccessHandler" />
 
-        <logout logout-success-url="/login?logout" delete-cookies="JSESSIONID"/>
+        <logout logout-success-url="/start?logout" delete-cookies="JSESSIONID"/>
 
         <session-management>
             <concurrency-control max-sessions="100" session-registry-alias="sessionRegistry"/>

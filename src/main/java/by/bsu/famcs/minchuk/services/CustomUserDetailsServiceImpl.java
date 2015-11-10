@@ -5,6 +5,7 @@ import by.bsu.famcs.minchuk.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,20 +16,18 @@ import java.util.Set;
 
 
 @Service("userDetailsService")
-public class CustomUserDetailsServiceImpl  implements UserDetailsService {
+public class CustomUserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UserService userService;
+    private PersonService personService;
 
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return null;
-    }
-
-    private Set<GrantedAuthority> buildUA (Set<UserRole> ur) {
-        Set<GrantedAuthority> setAuthorities = new HashSet<GrantedAuthority>();
-        for (UserRole userRole : ur) {
-            setAuthorities.add (new SimpleGrantedAuthority(userRole.getRole()));
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Person person = personService.readByUserName(username);
+        if (person == null) {
+            throw new UsernameNotFoundException("Can't find user with username: " + username);
         }
-        return setAuthorities;
+
+        Set<GrantedAuthority> authorities =  new HashSet<GrantedAuthority>();
+        return new org.springframework.security.core.userdetails.User(person.getUsername(), person.getPassword(), authorities);
     }
 }

@@ -172,7 +172,10 @@
     </dependency>
 
   </dependencies>
+
+
   <build>
+
     <finalName>vborisove</finalName>
   </build>
 </project>

@@ -5,3 +5,19 @@ html {
     -o-background-size: cover;
     background-size: cover;
 }
+
+.btn-primary {
+    margin-top: 10px;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+#first-control {
+    padding-top: 60px;
+}
+
+footer {
+    position: absolute;
+}

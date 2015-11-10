@@ -1,11 +1,5 @@
-.container-fluid {
-    min-height: 600px;
-
-}
-
 .btn-primary {
     margin-top: 10px;
-
 }
 
 .controls {
@@ -14,6 +8,10 @@
 
 #first-control {
     padding-top: 20px;
+}
+
+footer {
+    position: absolute;
 }
 
 html {
