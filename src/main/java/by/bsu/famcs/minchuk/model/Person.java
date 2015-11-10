@@ -1,7 +1,6 @@
 package by.bsu.famcs.minchuk.model;
 
 import java.io.Serializable;
-import javax.annotation.Generated;
 import javax.persistence.*;
 
 @Entity
@@ -10,29 +9,17 @@ public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "PERSON_ID")
-    @GeneratedValue
-    private long id;
+    @Column(name = "USERNAME", nullable = false)
+    private String username;
 
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "USERNAME")
-    private String userName;
-
-    @Column(name = "E_MAIL")
+    @Column(name = "E_MAIL", nullable = false)
     private String email;
 
-    @Column(name = "PASSWORD")
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -42,12 +29,12 @@ public class Person implements Serializable {
         this.name = name;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getEmail() {

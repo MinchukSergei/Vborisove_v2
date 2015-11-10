@@ -4,7 +4,7 @@ package by.bsu.famcs.minchuk.controllers;
  * Created by minchuk on 24/10/15.
  */
 import by.bsu.famcs.minchuk.model.Person;
-import by.bsu.famcs.minchuk.services.PersonService;
+import by.bsu.famcs.minchuk.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +17,7 @@ import javax.xml.ws.RequestWrapper;
 public class PersonController {
 
     @Autowired
-    private PersonService personService;
+    private UserService personService;
 
     @RequestMapping("/home")
     public String home() {

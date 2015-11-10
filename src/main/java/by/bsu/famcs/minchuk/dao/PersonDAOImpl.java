@@ -5,7 +5,6 @@ import by.bsu.famcs.minchuk.model.Person;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.classic.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +15,7 @@ import javax.persistence.Query;
  */
 
 @Repository
-public class PersonDAOImpl implements PersonDAO{
+public class PersonDAOImpl implements PersonDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -30,5 +29,9 @@ public class PersonDAOImpl implements PersonDAO{
         if (person != null) {
             sessionFactory.getCurrentSession().delete(person);
         }
+    }
+
+    public Person getUserById (long id) {
+        return (Person)sessionFactory.getCurrentSession().get(Person.class, id);
     }
 }
