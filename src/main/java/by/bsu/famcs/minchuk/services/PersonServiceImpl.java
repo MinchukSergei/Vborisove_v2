@@ -24,10 +24,6 @@ public class PersonServiceImpl implements PersonService {
         personDAO.updatePerson(person);
     }
 
-    public Person readByPersonName(String username) {
-        return personDAO.getPersonByUsername(username);
-    }
-
     public Person registerNewUserAccount(Person newPerson) throws NullPointerException {
         if (usernameExist(newPerson.getName())) {
             throw new NullPointerException("User with this username is already exist. Username: " + newPerson.getName());

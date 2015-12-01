@@ -21,7 +21,8 @@ public class Place implements Serializable {
     @Column(name = "PLACE_DESCRIPTION", nullable = false)
     private String description;
 
-    @Column(name = "PLACE_IMAGE", nullable = false)
+    @Lob
+    @Column(name = "PLACE_IMAGE", nullable = false, length = Integer.MAX_VALUE)
     private byte[] imageBytes;
 
     @ManyToOne(fetch = FetchType.LAZY)

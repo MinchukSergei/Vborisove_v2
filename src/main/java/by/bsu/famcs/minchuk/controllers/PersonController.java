@@ -41,7 +41,7 @@ public class PersonController {
                                      BindingResult result, Errors errors, HttpServletRequest request) {
         Person registered = new Person();
         if (!result.hasErrors()) {
-            registered = createUserAccount(newPerson, result);
+            registered = createUserAccount(newPerson);
         }
         if (registered == null) {
             result.rejectValue("username", "message.regError", "Wrong username or password");
@@ -67,7 +67,7 @@ public class PersonController {
 
     }
 
-    private Person createUserAccount(Person newPerson, BindingResult result) {
+    private Person createUserAccount(Person newPerson) {
         Person registered;
         try {
             registered = personService.registerNewUserAccount(newPerson);

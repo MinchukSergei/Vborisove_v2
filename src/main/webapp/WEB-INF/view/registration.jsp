@@ -18,9 +18,8 @@
 <c:import url="header.jsp"/>
 
 <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-1">
-
-<form action="<c:url value="/registration"/>" method="POST">
-      <div class="container-fluid">
+    <form action="<c:url value="/registration"/>" method="POST">
+          <div class="container-fluid">
             <div class="control-group" id="first-control">
               <div class="controls">
                 <label>Name</label>

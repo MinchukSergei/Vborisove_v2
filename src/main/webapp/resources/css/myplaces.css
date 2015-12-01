@@ -1,0 +1,46 @@
+.my-places-table {
+	margin-top: 70px;
+	min-height: 100vh;
+}
+
+th {
+	text-align: center;
+}
+
+td{
+ text-align:center;
+}
+
+img {
+	
+}
+
+.glyphicon {
+	font-size: 20px;
+}
+
+
+.td-image {
+	display: flex;
+	justify-content: center;
+}
+
+
+.td-image img {
+	max-width: 150px;
+	max-height: 100px;
+	
+}
+
+.td-description {
+	overflow-y: scroll;
+}
+
+#newPlaceBtn {
+	margin-bottom: 30px;
+}
+
+
+/*.table> tbody > tr > td {
+	border: none;
+}*/

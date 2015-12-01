@@ -26,34 +26,15 @@
 
 <div class="gallary">
     <div class="flex-container">
-        <div class="flex1">
-            <img src="../../resources/img/test1.jpg" alt="USATAYABABA" class="image-link">
-        </div>
+        <c:forEach var="allPlaces" items="${places}" varStatus="status">
 
         <div class="flex1">
-            <img src="../../resources/img/test2.jpg" alt="USATAYABABA" class="image-link">
-            <span class="image-description" hidden>HELLo</span>
-            <span class="liked" hidden>1</span>
-        </div>
-        <div class="flex1">
-            <img src="../../resources/img/test3.jpg" alt="USATAYABABA" class="image-link">
-        </div>
-        <div class="flex1">
-            <img src="../../resources/img/test4.jpg" alt="USATAYABABA" class="image-link">
-        </div>
-        <div class="flex1">
-            <img src="../../resources/img/test1.jpg" alt="USATAYABABA" class="image-link">
-        </div>
-        <div class="flex1">
-            <img src="../../resources/img/test2.jpg" alt="USATAYABABA" class="image-link">
-        </div>
-        <div class="flex1">
-            <img src="../../resources/img/test3.jpg" alt="USATAYABABA" class="image-link">
-        </div>
+            <img src="${photos.get(status.index)}" class="image-link">
+            <span class="image-name" hidden>${allPlaces.name}</span>
+            <span class="image-description" hidden>${allPlaces.description}</span>
 
-        <div class="flex1">
-            <img src="../../resources/img/test4.jpg" alt="USATAYABABA" class="image-link">
         </div>
+        </c:forEach>
     </div>
 </div>
 
@@ -65,12 +46,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Image</h4>
+                    <span class="modal-title"></span>
                 </div>
                 <div class="modal-body">
                     <img class="modal-image" src="" alt="USATAYABABA">
-                    <div class="like" >
+                    <div class="like">
                         <span class="glyphicon like-span" id="id-like"></span>
+                        <span class="photoId" hidden></span>
                     </div>
                 </div>
                 <div class="modal-footer">
