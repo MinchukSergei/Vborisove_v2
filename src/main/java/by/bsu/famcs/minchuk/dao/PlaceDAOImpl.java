@@ -54,7 +54,7 @@ public class PlaceDAOImpl implements PlaceDAO {
     @Override
     public void deletePlace(long id) {
         Place place = (Place) getCurrentSession().createCriteria(Place.class).
-                add(Restrictions.eq("id", id)).list().get(0);
+                add(Restrictions.eq("id", id)).uniqueResult();
         getCurrentSession().delete(place);
         getCurrentSession().flush();
     }

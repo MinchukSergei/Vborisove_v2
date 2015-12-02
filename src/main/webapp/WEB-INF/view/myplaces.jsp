@@ -36,7 +36,11 @@
                             <td><div class="td-image"><img src="${myPhotos.get(status.index)}"></div></td>
                             <td><textarea class="form-control" rows="5" readonly>${place.description}</textarea></td>
                             <td><span class="glyphicon glyphicon-edit"></span></td>
-                            <td><span class="glyphicon glyphicon-remove"></span></td>
+                            <td>
+                                <a href="/myPhotos/${place.id}/delete"
+                                   class="glyphicon glyphicon-remove"
+                                   onclick="return confirm('Are you sure you want to delete?')"></a>
+                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -77,7 +81,6 @@
                         <div class="form-group">
                             <label for="inputFile">Выберите файл</label>
                             <input type="file" name="photo" id="inputFile" accept="image/jpeg, image/png">
-
                             <p class="help-block">Выберите картинку вашего места</p>
                         </div>
                     </div>

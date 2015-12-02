@@ -5,10 +5,7 @@ import by.bsu.famcs.minchuk.model.Place;
 import by.bsu.famcs.minchuk.services.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -47,6 +44,12 @@ public class MyPlacesController {
         Place place = getNewPlace(newPlace, currentPerson, photo);
         placeService.createNewPlace(place);
 
+        return "redirect:/myPhotos";
+    }
+
+    @RequestMapping(value = "/myPhotos/{photoId}/delete", method = RequestMethod.GET)
+    public String deletePlace(@PathVariable String photoId) {
+        placeService.deletePlaceById(Long.parseLong(photoId));
         return "redirect:/myPhotos";
     }
 

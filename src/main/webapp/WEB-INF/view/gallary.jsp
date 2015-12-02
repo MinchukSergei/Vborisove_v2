@@ -32,7 +32,6 @@
             <img src="${photos.get(status.index)}" class="image-link">
             <span class="image-name" hidden>${allPlaces.name}</span>
             <span class="image-description" hidden>${allPlaces.description}</span>
-
         </div>
         </c:forEach>
     </div>
@@ -49,7 +48,7 @@
                     <span class="modal-title"></span>
                 </div>
                 <div class="modal-body">
-                    <img class="modal-image" src="" alt="USATAYABABA">
+                    <img class="modal-image" src="">
                     <div class="like">
                         <span class="glyphicon like-span" id="id-like"></span>
                         <span class="photoId" hidden></span>

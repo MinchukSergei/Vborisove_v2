@@ -29,6 +29,7 @@ public class GallaryController {
         List<String> photos = new ArrayList<String>();
         List<Boolean> likedPhotos = new ArrayList<Boolean>();
 
+
         for (Place place : allPlaces) {
             photos.add("/photo/" + place.getId());
             likedPhotos.add(placeService.isLiked(person, place.getId()));
