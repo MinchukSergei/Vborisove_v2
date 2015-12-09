@@ -3,8 +3,6 @@ $('.image-link').click(function () {
     $('.modal-description').text($(this).parent().children('.image-description').text());
     $('.modal-title').text($(this).parent().children('.image-name').text());
     $('.like').children('.photoId').text($(this).attr("src"));
-
-
     isLiked($('.like-span'));
     $('#myModal').modal('show');
 });

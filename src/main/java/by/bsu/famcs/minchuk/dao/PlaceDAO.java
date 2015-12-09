@@ -1,5 +1,6 @@
 package by.bsu.famcs.minchuk.dao;
 
+import by.bsu.famcs.minchuk.model.Comment;
 import by.bsu.famcs.minchuk.model.Person;
 import by.bsu.famcs.minchuk.model.Place;
 
@@ -23,4 +24,14 @@ public interface PlaceDAO {
     void removeLike(Person person, long photoId);
 
     void setLike(Person person, long photoId);
+
+    Comment addComment(Comment comment);
+
+    void removeComment(long id);
+
+    void updateComment(Comment comment);
+
+    List<Comment> getCommentsByPhotoId(long id);
+
+    List<Place> getTop5Places();
 }

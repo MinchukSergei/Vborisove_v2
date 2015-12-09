@@ -1,6 +1,7 @@
 package by.bsu.famcs.minchuk.services;
 
 import by.bsu.famcs.minchuk.dao.PlaceDAO;
+import by.bsu.famcs.minchuk.model.Comment;
 import by.bsu.famcs.minchuk.model.Person;
 import by.bsu.famcs.minchuk.model.Place;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,5 +61,31 @@ public class PlaceServiceImpl implements PlaceService {
     @Override
     public void removeLike(Person person, long photoId) {
         placeDAO.removeLike(person, photoId);
+    }
+
+    @Override
+    public Comment addComment(Comment comment) {
+        placeDAO.addComment(comment);
+        return comment;
+    }
+
+    @Override
+    public void removeComment(long id) {
+        placeDAO.removeComment(id);
+    }
+
+    @Override
+    public void updateComment(Comment comment) {
+        placeDAO.updateComment(comment);
+    }
+
+    @Override
+    public List<Comment> getCommentsByPlaceId(long id) {
+        return placeDAO.getCommentsByPhotoId(id);
+    }
+
+    @Override
+    public List<Place> getTop5Places() {
+        return placeDAO.getTop5Places();
     }
 }

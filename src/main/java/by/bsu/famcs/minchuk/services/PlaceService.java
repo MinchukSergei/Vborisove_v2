@@ -1,5 +1,6 @@
 package by.bsu.famcs.minchuk.services;
 
+import by.bsu.famcs.minchuk.model.Comment;
 import by.bsu.famcs.minchuk.model.Person;
 import by.bsu.famcs.minchuk.model.Place;
 
@@ -25,4 +26,14 @@ public interface PlaceService {
     void setLike(Person person, long photoId);
 
     void removeLike(Person person, long photoId);
+
+    Comment addComment(Comment comment);
+
+    void removeComment(long id);
+
+    void updateComment(Comment comment);
+
+    List<Comment> getCommentsByPlaceId(long id);
+
+    List<Place> getTop5Places();
 }

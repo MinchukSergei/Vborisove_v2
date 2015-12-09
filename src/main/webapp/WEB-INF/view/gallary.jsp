@@ -29,9 +29,11 @@
         <c:forEach var="allPlaces" items="${places}" varStatus="status">
 
         <div class="flex1">
+            <div class="thumbnail">
             <img src="${photos.get(status.index)}" class="image-link">
             <span class="image-name" hidden>${allPlaces.name}</span>
             <span class="image-description" hidden>${allPlaces.description}</span>
+            </div>
         </div>
         </c:forEach>
     </div>

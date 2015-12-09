@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "COMMENT")
+@Table(name = "PLACE_COMMENT")
 public class Comment implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -13,15 +13,15 @@ public class Comment implements Serializable {
     @Column(name = "COMMENT_ID")
     private long id;
 
-    @Column(name = "COMMENT_SOURCE")
-    private String comment_source;
+    @Column(name = "COMMENT_SOURCE", nullable = false)
+    private String commentSource;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FK_PLACE_ID", nullable = false)
     private Place place;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FK_PERSON_USERNAME", nullable = false)
+    @JoinColumn(name = "FK_PERSON_ID", nullable = false)
     private Person person;
 
     public long getId() {
@@ -32,12 +32,12 @@ public class Comment implements Serializable {
         this.id = id;
     }
 
-    public String getComment_source() {
-        return comment_source;
+    public String getCommentSource() {
+        return commentSource;
     }
 
-    public void setComment_source(String comment_source) {
-        this.comment_source = comment_source;
+    public void setCommentSource(String commentSource) {
+        this.commentSource = commentSource;
     }
 
     public Place getPlace() {

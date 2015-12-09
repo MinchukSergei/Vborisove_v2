@@ -1,19 +1,14 @@
 package by.bsu.famcs.minchuk.dao;
 
 
-import by.bsu.famcs.minchuk.model.Like;
-import by.bsu.famcs.minchuk.model.Person;
-import by.bsu.famcs.minchuk.model.Place;
-import by.bsu.famcs.minchuk.model.PlacePersonId;
-import org.hibernate.Criteria;
-import org.hibernate.FetchMode;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
+import by.bsu.famcs.minchuk.model.*;
+import org.hibernate.*;
+import org.hibernate.criterion.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.beans.Expression;
+import javax.management.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -21,7 +16,6 @@ public class PlaceDAOImpl implements PlaceDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
-
 
     @Override
     public Place createPlace(Place newPlace) {
@@ -87,6 +81,54 @@ public class PlaceDAOImpl implements PlaceDAO {
         getCurrentSession().save(new Like(new PlacePersonId(person.getUsername(), photoId)));
         getCurrentSession().flush();
     }
+
+    @Override
+    public Comment addComment(Comment comment) {
+        getCurrentSession().save(comment);
+        getCurrentSession().flush();
+        return comment;
+    }
+
+    @Override
+    public void removeComment(long id) {
+        Comment comment = (Comment) getCurrentSession().createCriteria(Comment.class).
+                add(Restrictions.eq("id", id)).uniqueResult();
+        getCurrentSession().delete(comment);
+        getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateComment(Comment comment) {
+        getCurrentSession().update(comment);
+        getCurrentSession().flush();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Comment> getCommentsByPhotoId(long id) {
+        Criteria criteria = getCurrentSession().createCriteria(Comment.class);
+        criteria.setFetchMode("place", FetchMode.JOIN);
+        criteria.setFetchMode("person", FetchMode.JOIN);
+        criteria.add(Restrictions.eq("place.id", id));
+        return criteria.list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Place> getTop5Places() {
+        String hql = "SELECT PLACE_ID FROM PLACE LEFT " +
+                "OUTER JOIN LIKE_PLACE ON PLACE_ID = FK_PLACE_ID GROUP BY PLACE_ID " +
+                "ORDER BY COUNT(FK_PERSON_ID) DESC";
+        SQLQuery query = getCurrentSession().createSQLQuery(hql);
+        query.setMaxResults(5);
+        List<Integer> fakePlacesId = query.list();
+        List<Long> truePlacesId = new ArrayList<Long>();
+        for (Integer a : fakePlacesId) {
+            truePlacesId.add((long) a);
+        }
+        DetachedCriteria criteria = DetachedCriteria.forClass(Place.class)
+                .add(Property.forName("id").in(truePlacesId));
+        return criteria.getExecutableCriteria(getCurrentSession()).list();
+    }
+
 
     public Session getCurrentSession() {
         return sessionFactory.getCurrentSession();

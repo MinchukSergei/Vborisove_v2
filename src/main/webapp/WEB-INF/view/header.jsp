@@ -14,9 +14,8 @@
             <div class="collapse navbar-collapse navbar-right" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="<c:url value="/gallary"/>">Главная</a></li>
-                <li><a href="#">Лучшие места</a></li>
+                <li><a href="<c:url value="/best"/>">Лучшие места</a></li>
                 <li><a href="<c:url value="/myPhotos"/>">Любимый уголок</a></li>
-                <li><a href="#">Планы</a> </li>
                 <li><a href="#">Контакты</a></li>
                 <li><a href="<c:url value="/j_spring_security_logout"/>">Выйти</a></li>
             </ul>
