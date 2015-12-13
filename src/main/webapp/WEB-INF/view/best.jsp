@@ -8,9 +8,12 @@
     <script src="../../resources/js/image-comment.js" defer></script>
     <link rel='stylesheet' href='webjars/bootstrap/3.3.5/css/bootstrap.min.css' type='text/css' media='all'>
     <script src="webjars/jquery/2.1.4/jquery.min.js"></script>
+    <script src="webjars/jquery-validation/1.14.0/jquery.validate.min.js"></script>
+    <script src="webjars/jquery-validation/1.14.0/jquery.validate.js"></script>
     <script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel='stylesheet' href="../../resources/css/navigation.css">
     <link rel='stylesheet' href="../../resources/css/best.css">
+    <link rel='stylesheet' href="../../resources/css/validate.css">
 </head>
 <body>
 
@@ -81,8 +84,16 @@
                 </div>
 
                 <div class="modal-footer">
-                    <textarea id="commentSrc" class="form-control" rows="3" placeholder="Введите комментарий..."></textarea>
-                    <button type="button" id="btn-add" class="btn btn-primary">Добавить комментарий</button>
+                    <form id="commentValid">
+                        <div class="controls">
+                            <textarea id="commentSrc"
+                              name="commentArea" class="form-control required" rows="3"
+                              placeholder="Введите комментарий..." maxlength="600"></textarea>
+                        </div>
+                        <div class="controls">
+                            <button type="submit" id="btn-add" class="btn btn-primary">Добавить комментарий</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 

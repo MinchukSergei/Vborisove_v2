@@ -55,7 +55,7 @@ public class MyPlacesController {
 
     @RequestMapping(value = "/myPhotos/{idPlace}/update", method = RequestMethod.POST)
     public String updatePlace(@ModelAttribute("place") Place newPlace, @RequestParam MultipartFile photo,
-                              HttpServletRequest request, @PathVariable String idPlace) {
+                              @PathVariable String idPlace) {
         Place updatePlace = placeService.getPlaceById(Integer.parseInt(idPlace));
         try {
             if (photo.getBytes().length != 0) {

@@ -5,11 +5,18 @@
 <head>
     <meta charset="utf-8">
     <script src="../../resources/js/update-place.js" defer></script>
+    <script src="../../resources/js/new-place-validate.js" defer></script>
+    <script src="../../resources/js/update-place-validate.js" defer></script>
     <link rel='stylesheet' href='webjars/bootstrap/3.3.5/css/bootstrap.min.css' type='text/css' media='all'>
     <script src="webjars/jquery/2.1.4/jquery.min.js"></script>
+    <script src="webjars/jquery-validation/1.14.0/jquery.validate.min.js"></script>
+    <script src="webjars/jquery-validation/1.14.0/jquery.validate.js"></script>
+    <script src="webjars/jquery-validation/1.14.0/additional-methods.min.js"></script>
+    <script src="webjars/jquery-validation/1.14.0/additional-methods.js"></script>
     <script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel='stylesheet' href="../../resources/css/myplaces.css">
     <link rel='stylesheet' href="../../resources/css/navigation.css">
+    <link rel='stylesheet' href="../../resources/css/validate.css">
 </head>
 <body>
 
@@ -37,7 +44,7 @@
                             <td><div class="td-image"><img src="${myPhotos.get(status.index)}"></div></td>
                             <td><textarea class="form-control" rows="5" readonly>${place.description}</textarea></td>
                             <td><a data-toggle="modal" data-target="#updateModel" class="glyphicon glyphicon-edit
-                            image-upd"></a>
+                            image-upd" id="updatePlaceBtn"></a>
                                 <span id="plName" hidden>${place.name}</span>
                                 <span id="plDescr" hidden>${place.description}</span>
                                 <span id="plSrc" hidden>${myPhotos.get(status.index)}</span>
@@ -71,7 +78,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">New place</h4>
                 </div>
-                <form action="<c:url value="/myPhotos"/>" method="POST" enctype="multipart/form-data">
+                <form action="<c:url value="/myPhotos"/>" method="POST" enctype="multipart/form-data" id="newPlaceForm">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name">Название места</label>
@@ -80,11 +87,11 @@
                         <div class="form-group">
                             <label for="descr">Описание вашего места</label>
                             <textarea id="descr" class="form-control" rows="5"
-                                      name="description" placeholder="Максимум 600 символов"></textarea>
+                                      name="description" placeholder="Максимум 600 символов" maxlength="600"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="inputFile">Выберите файл</label>
-                            <input type="file" name="photo" id="inputFile" accept="image/jpeg, image/png">
+                            <input type="file" name="photo" id="inputFile" accept="image/jpeg, image/png, image/gif">
                             <p class="help-block">Выберите картинку вашего места</p>
                         </div>
                     </div>
@@ -106,7 +113,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Update place</h4>
                 </div>
-                <form action="<c:url value="/myPhotos"/>" method="POST" enctype="multipart/form-data" id="rrr">
+                <form action="<c:url value="/myPhotos"/>" method="POST" enctype="multipart/form-data" id="updatePlaceForm">
 
                     <div class="modal-body">
                         <div class="form-group">
@@ -125,7 +132,7 @@
 
                         <div class="form-group">
                             <label for="inputFile">Выберите файл</label>
-                            <input type="file" name="photo" id="inputFileUpd" accept="image/jpeg, image/png">
+                            <input type="file" name="photo" id="inputFileUpd" accept="image/jpeg, image/png, image/gif">
                             <p class="help-block">Замените вашу картинку</p>
                         </div>
                     </div>

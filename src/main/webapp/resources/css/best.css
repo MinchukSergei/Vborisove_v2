@@ -86,3 +86,7 @@ textarea {
 .panel {
     margin-bottom: 0;
 }
+
+.list-group-item {
+	word-wrap: break-word;
+}

@@ -10,6 +10,7 @@ $('.image-link').click(function () {
 
     var photoId = $('.photoId').text();
     getComments(photoId);
+    $('#commentSrc-error').remove();
 });
 
 
@@ -49,20 +50,34 @@ function isLiked(param) {
     });
 }
 
-$('#btn-add').click(function() {
-    var photoId = $('.photoId').text();
-
-    $.ajax({
-        url: photoId + '/addComment',
-        type: 'post',
-        data: {
-            'commentSrc': $('#commentSrc').val()
-        },
-        success: function() {
-            $('#commentSrc').val("");
-            getComments(photoId);
+$('#commentValid').validate({
+    errorClass: "my-error-class",
+    validClass: "my-valid-class",
+    rules: {
+        commentSrc: {
+            required: true,
+            maxlength: 600
         }
-    });
+    }
+});
+
+$('#btn-add').click(function() {
+    if ($('#commentValid').valid()) {
+        var photoId = $('.photoId').text();
+
+        $.ajax({
+            url: photoId + '/addComment',
+            type: 'post',
+            data: {
+                'commentSrc': $('#commentSrc').val()
+            },
+            success: function () {
+                $('#commentSrc').val("");
+                getComments(photoId);
+            }
+        });
+    }
+    return false;
 });
 
 function getComments(param) {

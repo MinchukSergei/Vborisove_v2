@@ -7,18 +7,22 @@
 <html>
 <head>
   <meta charset="utf-8">
+    <script src="../../resources/js/registration-validate.js" defer></script>
     <script src="webjars/jquery/2.1.4/jquery.min.js"></script>
+    <script src="webjars/jquery-validation/1.14.0/jquery.validate.min.js"></script>
+    <script src="webjars/jquery-validation/1.14.0/jquery.validate.js"></script>
     <script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel='stylesheet' href='webjars/bootstrap/3.3.5/css/bootstrap.min.css' type='text/css' media='all'>
     <link rel='stylesheet' href="../../resources/css/navigation.css">
     <link rel='stylesheet' href="../../resources/css/registration.css">
+    <link rel='stylesheet' href="../../resources/css/validate.css">
 </head>
 <body>
 
 <c:import url="header.jsp"/>
 
 <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-1">
-    <form action="<c:url value="/registration"/>" method="POST">
+    <form action="<c:url value="/registration"/>" method="POST" id="regForm">
           <div class="container-fluid">
             <div class="control-group" id="first-control">
               <div class="controls">
@@ -51,7 +55,7 @@
               <div class="controls">
                   <c:if test="${not empty error}">
                       <div class="alert alert-danger" role="alert">
-                          User with such name already exists
+                          User with such username already exists
                       </div>
                   </c:if>
               </div>
@@ -60,7 +64,7 @@
             <div class="control-group">
               <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3">
                 <div class="controls">
-                  <button type="submit" class="btn btn-primary btn-block">Register</button>
+                  <button type="submit" class="btn btn-primary btn-block" id="regBtn">Register</button>
                 </div>
               </div>
             </div>
