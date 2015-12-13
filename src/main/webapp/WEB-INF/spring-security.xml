@@ -9,7 +9,7 @@
     <beans:bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter">
         <beans:property name="rolePrefix" value=""/>
     </beans:bean>
-    <beans:bean id="authenticationSuccessHandler" class="by.bsu.famcs.minchuk.utils.handlers.CustomAuthenticationSuccessHandler"/>
+
     <beans:bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
 
     <http auto-config='true' use-expressions="true">
@@ -27,6 +27,8 @@
             <concurrency-control max-sessions="100" session-registry-alias="sessionRegistry"/>
         </session-management>
     </http>
+
+    <beans:bean id="authenticationSuccessHandler" class="by.bsu.famcs.minchuk.utils.handlers.CustomAuthenticationSuccessHandler"/>
 
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailsService">

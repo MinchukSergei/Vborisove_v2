@@ -19,7 +19,9 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     @Autowired
     private PersonService personService;
 
-    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
+    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
+                                        HttpServletResponse httpServletResponse,
+                                        Authentication authentication) throws IOException, ServletException {
         HttpSession session = httpServletRequest.getSession();
         User authPerson = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Person person = personService.readByUserName(authPerson.getUsername());

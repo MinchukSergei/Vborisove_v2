@@ -7,12 +7,14 @@
 }
 
 #first-control {
-    padding-top: 20px;
+    padding-top: 60px;
 }
 
 footer {
     position: absolute;
 }
+
+
 
 html {
     background: url("../img/reg_back.png") no-repeat center center fixed;

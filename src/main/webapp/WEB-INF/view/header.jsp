@@ -16,7 +16,6 @@
                 <li><a href="<c:url value="/gallary"/>">Главная</a></li>
                 <li><a href="<c:url value="/best"/>">Лучшие места</a></li>
                 <li><a href="<c:url value="/myPhotos"/>">Любимый уголок</a></li>
-                <li><a href="#">Контакты</a></li>
                 <li><a href="<c:url value="/j_spring_security_logout"/>">Выйти</a></li>
             </ul>
         </div>

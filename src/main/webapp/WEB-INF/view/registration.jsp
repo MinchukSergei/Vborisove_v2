@@ -47,6 +47,15 @@
                   <input name="password" type="password" placeholder="Password" class="form-control">
               </div>
             </div>
+            <div class="control-group">
+              <div class="controls">
+                  <c:if test="${not empty error}">
+                      <div class="alert alert-danger" role="alert">
+                          User with such name already exists
+                      </div>
+                  </c:if>
+              </div>
+            </div>
 
             <div class="control-group">
               <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3">
@@ -55,6 +64,9 @@
                 </div>
               </div>
             </div>
+
+
+
           </div>
     </form>
 </div>

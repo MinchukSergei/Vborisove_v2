@@ -53,6 +53,23 @@ public class MyPlacesController {
         return "redirect:/myPhotos";
     }
 
+    @RequestMapping(value = "/myPhotos/{idPlace}/update", method = RequestMethod.POST)
+    public String updatePlace(@ModelAttribute("place") Place newPlace, @RequestParam MultipartFile photo,
+                              HttpServletRequest request, @PathVariable String idPlace) {
+        Place updatePlace = placeService.getPlaceById(Integer.parseInt(idPlace));
+        try {
+            if (photo.getBytes().length != 0) {
+                updatePlace.setImageBytes(photo.getBytes());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        updatePlace.setDescription(newPlace.getDescription());
+        updatePlace.setName(newPlace.getName());
+        placeService.updatePlace(updatePlace);
+        return "redirect:/myPhotos";
+    }
+
     private Place getNewPlace(Place newPlace, Person person, MultipartFile photo) {
         Place place = new Place();
         place.setName(newPlace.getName());
@@ -68,4 +85,6 @@ public class MyPlacesController {
         }
         return place;
     }
+
+
 }

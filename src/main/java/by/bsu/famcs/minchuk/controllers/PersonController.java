@@ -1,7 +1,9 @@
 package by.bsu.famcs.minchuk.controllers;
 
 import by.bsu.famcs.minchuk.model.Person;
+import by.bsu.famcs.minchuk.model.Place;
 import by.bsu.famcs.minchuk.services.PersonService;
+import by.bsu.famcs.minchuk.services.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -30,6 +34,9 @@ public class PersonController {
 
     @Autowired
     private PersonService personService;
+
+    @Autowired
+    private PlaceService placeService;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView getRegistration() {
@@ -47,7 +54,7 @@ public class PersonController {
             result.rejectValue("username", "message.regError", "Wrong username or password");
         }
         if (result.hasErrors()) {
-            return new ModelAndView("../../WEB-INF/view/registration", "person", newPerson);
+            return new ModelAndView("../../WEB-INF/view/registration", "error", "Error");
         } else {
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(registered.getUsername(),
                     newPerson.getPassword());
@@ -61,7 +68,23 @@ public class PersonController {
                     SecurityContextHolder.getContext());
             request.getSession().setAttribute("person", registered);
 
-            return new ModelAndView("../../WEB-INF/view/gallary");
+            ModelAndView modelAndView = new ModelAndView("../../WEB-INF/view/gallary");
+
+            List<Place> allPlaces = placeService.getAllPlaces();
+            List<String> photos = new ArrayList<String>();
+            List<Boolean> likedPhotos = new ArrayList<Boolean>();
+
+
+            for (Place place : allPlaces) {
+                photos.add("/photo/" + place.getId());
+                likedPhotos.add(placeService.isLiked(registered, place.getId()));
+            }
+
+            modelAndView.addObject("places", allPlaces);
+            modelAndView.addObject("photos", photos);
+            modelAndView.addObject("likes", likedPhotos);
+
+            return modelAndView;
         }
 
 

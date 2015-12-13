@@ -39,6 +39,10 @@ footer p {
 	color: #999999;
 }
 
+footer p a {
+	margin-left: 20px;
+}
+
 .gallary {
 	min-height: 700px;
 	margin-top: 10px;

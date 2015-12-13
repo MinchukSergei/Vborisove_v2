@@ -2,22 +2,17 @@ package by.bsu.famcs.minchuk.controllers;
 
 import by.bsu.famcs.minchuk.model.Comment;
 import by.bsu.famcs.minchuk.model.Person;
-import by.bsu.famcs.minchuk.model.Place;
 import by.bsu.famcs.minchuk.services.PlaceService;
 import by.bsu.famcs.minchuk.utils.handlers.Pair;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.hibernate.Criteria;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class PhotoController {
